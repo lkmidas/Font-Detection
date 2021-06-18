@@ -152,7 +152,7 @@ if __name__ == "__main__":
         args.poly = True
 
     # load DeepFont net
-    deepfont = load_model('deepfont_model_79.h5')
+    deepfont = load_model('deepfont_model.h5')
 
     for subdir, dirs, files in os.walk(samples_folder):
         for f in files:
@@ -168,7 +168,18 @@ if __name__ == "__main__":
             bboxes, polys, score_text = test_net(net, image, args.text_threshold, args.link_threshold, args.low_text, args.cuda,
                                                 args.poly, refine_net)
             labels = []
-            label_list = ["Lato", "Monserrat", "Nunito", "Open Sans", "Poppins", "Raleway", "Roboto", "Rubik", "Source Sans Pro", "Work Sans"]
+            label_list = [
+                "Lato", "Lato (bold)", 
+                "Monserrat", "Monserrat (bold)",
+                "Nunito", "Nunito (bold)",
+                "Open Sans", "Open Sans (bold)", 
+                "Poppins", "Poppins (bold)", 
+                "Raleway", "Raleway (bold)", 
+                "Roboto", "Roboto (bold)",
+                "Rubik", "Rubik (bold)",
+                "Source Sans Pro", "Source Sans Pro (bold)",
+                "Work Sans", "Work Sans (bold)"
+            ]
 
             # run DeepFont on each bbox
             for bbox in bboxes:
